@@ -107,4 +107,48 @@ Point3D RaySpotLight::transparency(RayIntersectionInfo& iInfo,RayShape* shape,Po
 // OpenGL stuff //
 //////////////////
 void RaySpotLight::drawOpenGL(int index){
+
+
+        GLfloat light_diffuse[] = { color[0], color[1], color[2], 0 };
+
+        GLfloat light_specular[] = { color[0], color[1], color[2], 0 };
+
+        GLfloat light_ambient[] = { 0.f, 0.f, 0.f, 1.0f };
+
+        GLfloat light_position[] = { location[0], location[1], location[2], 1 };
+
+		GLfloat light_constant_atten =  constAtten ;
+
+		GLfloat light_linear_atten =  linearAtten ;
+
+		GLfloat light_quad_atten =  quadAtten ;    
+
+        GLfloat spot_direction[] = { -direction[0], -direction[1], -direction[2] };
+
+        glLightf(GL_LIGHT0 + index, GL_SPOT_CUTOFF, cutOffAngle);
+ 
+        glLightfv(GL_LIGHT0 + index, GL_SPOT_DIRECTION, spot_direction);
+
+        glLightf(GL_LIGHT0 + index, GL_SPOT_EXPONENT, dropOffRate);
+        
+        glLightfv(GL_LIGHT0 + index, GL_DIFFUSE, light_diffuse);
+
+        glLightfv(GL_LIGHT0 + index, GL_SPECULAR, light_specular);
+
+        glLightfv(GL_LIGHT0 + index, GL_AMBIENT, light_ambient);
+
+        glLightfv(GL_LIGHT0 + index, GL_POSITION, light_position);
+
+        glLightf(GL_LIGHT0 + index, GL_CONSTANT_ATTENUATION, light_constant_atten);
+
+		glLightf(GL_LIGHT0 + index, GL_LINEAR_ATTENUATION, light_linear_atten);
+	
+		glLightf(GL_LIGHT0 + index, GL_QUADRATIC_ATTENUATION, light_quad_atten);
+        
+		glEnable(GL_LIGHT0 + index);
+
+
+
+
+
 }
