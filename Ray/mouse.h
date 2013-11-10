@@ -4,7 +4,7 @@
 
 /** This class represents the current state of the mouse */
 class Mouse{
-public:
+ public:
 	/** Was the shift button depressed when the mouse state was updated */
 	int shiftDown;
 

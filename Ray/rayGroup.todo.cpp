@@ -36,7 +36,7 @@ int RayGroup::getOpenGLCallList(void){
         GLuint newList= glGenLists (1);
 	
         //get new list
-	glNewList(newList, GL_COMPILE);
+		glNewList(newList, GL_COMPILE);
 
         // Material Index is set to -1
         drawOpenGL(-1);
@@ -49,11 +49,29 @@ int RayGroup::getOpenGLCallList(void){
 
 int RayGroup::drawOpenGL(int materialIndex){
 
+	Matrix4D matrix = getMatrix();
+
+	float M[16];
+
+	int i,j;
+
+	for(i=0 ; i<4 ;i++)
+		for(j=0; j<4 ;j++)
+		{
+			M[4*i + j] = matrix.m[i][j];
+		}
+	
 	 if (openGLCallListID == 0) {
                 int i = 0;
                 for (i = 0; i < sNum; i++) {
 
-                        shapes[i]->drawOpenGL(materialIndex);
+					glPushMatrix();
+					
+					glMultMatrixf(M);
+
+					shapes[i]->drawOpenGL(materialIndex);
+
+					glPopMatrix();
                 }
 
         } else {
