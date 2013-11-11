@@ -32,15 +32,36 @@ int StaticRayGroup::set(void){
 // OpenGL stuff //
 //////////////////
 int RayGroup::getOpenGLCallList(void){
-        //generate the new call list
-        GLuint newList= glGenLists (1);
+
+	    Matrix4D matrix = getMatrix();
+
+		float M[16];
+
+		int i,j;
+
+		for(i=0 ; i<4 ;i++)
+			for(j=0; j<4 ;j++)
+			{
+				M[4*i + j] = matrix.m[i][j];
+			}
+		
+	    //generate the new call list
+
+	    GLuint newList= glGenLists (1);
 	
         //get new list
 		glNewList(newList, GL_COMPILE);
 
-        // Material Index is set to -1
-        drawOpenGL(-1);
+		glPushMatrix();
+		
+		glMultMatrixf(M);
 
+		for (i = 0; i < sNum; i++) {
+
+					shapes[i]->drawOpenGL(-1);
+		}
+		glPopMatrix();
+        
         glEndList();
 
         return newList;
