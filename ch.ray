@@ -1,0 +1,100 @@
+#texture_num 1
+#texture ch.jpg
+#material_num 2
+#material
+	1.0 1.0 1.0
+	1.0 1.0 1.0
+    1.0 1.0 1.0
+	1.0 1.0 1.0 100
+	1.0 1.0 1.0
+	1.05
+	0
+	!!
+#material
+	0.0 0.0 0.0
+	0.0 0.0 0.0
+    0.0 0.0 0.0
+	0.0 0.0 0.0 100
+	0.1 1.0 1.0
+	1.05
+	-1
+	!!
+#vertex_num 12
+#vertex
+	0.75 3.35 0.1
+    0   0   1
+	1  1
+#vertex
+	0.75 1.85 0.1
+    0   0   1
+	1   0
+#vertex
+	-0.75 3.35 0.1
+    0   0   1
+	0   1
+#vertex
+	-0.75 1.85 0.1
+    0   0   1
+	0   0
+#vertex
+	0.75 1.9 1.5
+    0   1   0
+	1   1
+#vertex
+	0.75 1.9 0
+    0   1   0
+	1   0
+#vertex
+	-0.75 1.9 1.5
+    0   1   0
+	0   1
+#vertex
+	-0.75 1.9 0
+    0   1   0
+	0   0
+#vertex
+	0.75 3.35 -0.1
+    0   0   1
+	1  1
+#vertex
+	0.75 1.85 -0.1
+    0   0   1
+	1   0
+#vertex
+	-0.75 3.35 -0.1
+    0   0   1
+	0   1
+#vertex
+	-0.75 1.85 -0.1
+    0   0   1
+	0   0
+#shape_triangle 0
+    0  2  1
+#shape_triangle 0
+    3  1  2
+#shape_triangle 0
+    4  5  6
+#shape_triangle 0
+    7  6  5
+#shape_triangle 0
+    8  10  9
+#shape_triangle 0
+    11  9  10
+#shape_box 0
+	0 2.6 0
+	1.5 1.5 0.2
+#shape_box 0
+	0 1.8 0.75
+	1.5 0.1 1.5
+#shape_cylinder 0
+	0.7 1.75 1.45
+	0.05 1.75
+#shape_cylinder 0
+	-0.7 1.75 1.45
+	0.05 1.75
+#shape_cylinder 0
+	-0.7 1.75  0.05
+	0.05 1.75
+#shape_cylinder 0
+	0.7 1.75  0.05
+	0.05 1.75

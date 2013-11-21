@@ -33,6 +33,8 @@ int StaticRayGroup::set(void){
 //////////////////
 int RayGroup::getOpenGLCallList(void){
 
+
+        
 	    Matrix4D matrix = getMatrix();
 
 		float M[16];
@@ -70,7 +72,11 @@ int RayGroup::getOpenGLCallList(void){
 
 int RayGroup::drawOpenGL(int materialIndex){
 
-	Matrix4D matrix = getMatrix();
+  
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable( GL_BLEND );
+
+    Matrix4D matrix = getMatrix();
 
 	float M[16];
 
@@ -82,7 +88,8 @@ int RayGroup::drawOpenGL(int materialIndex){
 			M[4*i + j] = matrix.m[i][j];
 		}
 	
-	 if (openGLCallListID == 0) {
+	if (openGLCallListID == 0) {
+		//printf("CAll list ID is zero! \n");
                 int i = 0;
                 for (i = 0; i < sNum; i++) {
 
@@ -95,15 +102,13 @@ int RayGroup::drawOpenGL(int materialIndex){
 					glPopMatrix();
                 }
 
-        } else {
-                int i = 0;
-                for (i = 0; i < sNum; i++) {
-                        glCallList(openGLCallListID);
-                }
-
+	 }
+	else{
+		//printf("CAll list ID is not zero! \n");
+		 glCallList(openGLCallListID);
         }
 
-        return -1;
+        return materialIndex;
 }
 
 /////////////////////

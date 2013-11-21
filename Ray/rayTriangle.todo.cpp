@@ -29,23 +29,23 @@ BoundingBox3D RayTriangle::setBoundingBox(void){
 //////////////////
 int RayTriangle::drawOpenGL(int materialIndex){
 	
-        Point3D v1 = v[0]->position;
+	Point3D v1 = v[0]->position;
 	Point3D v2 = v[1]->position;
 	Point3D v3 = v[2]->position;
 	Point3D n1 = v[0]->normal;
 	Point3D n2 = v[1]->normal;
 	Point3D n3 = v[2]->normal;
 	Point2D tex1 = v[0]->texCoordinate;
-        Point2D tex2 = v[1]->texCoordinate;
+	Point2D tex2 = v[1]->texCoordinate;
 	Point2D tex3 = v[2]->texCoordinate;
 
-        if (material->index != materialIndex) {
+	if (material->index != materialIndex) {
+		
+	 	material->drawOpenGL();
+	 }
 
-                material->drawOpenGL();
-        }
-
-        glBegin(GL_TRIANGLES);
-
+	glBegin(GL_TRIANGLES);
+    printf("%f, %f, %f, %f, %f, %f\n", tex1[0],tex1[1],tex2[0],tex2[1],tex3[0],tex3[0]);
  	glTexCoord2f(tex1.p[0], tex1.p[1]);       
 	glNormal3d(n1[0], n1[1], n1[2]);
 	glVertex3d(v1[0], v1[1], v1[2]);

@@ -146,44 +146,80 @@ Point3D RayScene::GetColor(Ray3D ray,int rDepth,Point3D cLimit){
 //////////////////
 void RayMaterial::drawOpenGL(void){
             
-           //draw material
-           //2D texture mapping
-           if(tex != NULL){
+	//draw material
 
-	            glEnable(GL_TEXTURE_2D);
+    //2D texture mapping
+    printf("texture procedure!!!\n");
+	if(tex != NULL){
+		//generate the texture image
+		GLubyte texImage[64][64][4];
+        int i, j, c;
+    
+		// for (i = 0; i < 64; i++) {
+		// 	for (j = 0; j < 64; j++) {
+		// 		c = ((((i&0x8)==0)^((j&0x8))==0))*255;
+		// 		texImage[i][j][0] = (GLubyte) c;
+		// 		texImage[i][j][1] = (GLubyte) c;
+		// 		texImage[i][j][2] = (GLubyte) c;
+		// 		texImage[i][j][3] = (GLubyte) 255;
+		// 	}
+		// }
 
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 
-			     tex->img->width(),
-			     tex->img->height(), 
-			     0, GL_RGBA, 
-			     GL_UNSIGNED_BYTE,&(tex->img->pixel(0, 0)));
-
-	   }
-	   else{
-	            glDisable(GL_TEXTURE_2D);
-	   }
-	   
-	   //light effect
-	   GLfloat material_diffuse[] = { diffuse[0], diffuse[1], diffuse[2],
-                        diffuse[3] };
-
-	   GLfloat material_ambient[] = { ambient[0], ambient[1], ambient[2],
-                        ambient[3] };
-
-	   GLfloat material_specular[] = { specular[0], specular[1], specular[2],
-                        specular[3] };
-
-	   GLfloat material_emissive[] = { emissive[0], emissive[1], emissive[2],
-                        emissive[3] };
-
-	   GLfloat material_shininess[] = { specularFallOff };
-
-	   glMaterialfv(GL_FRONT, GL_DIFFUSE, material_diffuse);
-	   glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
-	   glMaterialfv(GL_FRONT, GL_SPECULAR, material_specular);
-	   glMaterialfv(GL_FRONT, GL_EMISSION, material_emissive);
-	   glMaterialfv(GL_FRONT, GL_SHININESS, material_shininess);
-	   
+		
+		printf("2D texture!!!\n");
+		glEnable(GL_TEXTURE_2D);
+		
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 
+					 tex->img->height(),
+					 tex->img->width(), 
+					 0, GL_RGBA, 
+					 GL_UNSIGNED_BYTE, &(tex->img->pixel(0,0)));
+		
+		//glGetTexImage(GL_TEXTURE_2D,0,GL_RGBA,GL_UNSIGNED_BYTE,&(tex->img));
+		
+	}
+	else{
+		glDisable(GL_TEXTURE_2D);
+	}
+	//light effect
+	GLfloat material_diffuse[] = { diffuse[0], diffuse[1], diffuse[2],
+										  diffuse[3] };
+		   
+	GLfloat material_ambient[] = { ambient[0], ambient[1], ambient[2],
+										  ambient[3] };
+	
+	GLfloat material_specular[] = { specular[0], specular[1],specular[2],specular[3] };
+	
+	GLfloat material_emissive[] = { emissive[0], emissive[1], emissive[2],emissive[3] };
+	
+	GLfloat material_shininess[] = { specularFallOff };
+	
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, material_diffuse);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, material_specular);
+	glMaterialfv(GL_FRONT, GL_EMISSION, material_emissive);
+	glMaterialfv(GL_FRONT, GL_SHININESS, material_shininess);
+   
 }
 void RayTexture::setUpOpenGL(void){
+
+	printf("set up texture!\n");
+	//glClearColor (0.0, 0.0, 0.0, 0.0);
+	//glShadeModel(GL_FLAT);
+	//glEnable(GL_DEPTH_TEST);
+	//glClearColor (0.0, 0.0, 0.0, 0.0);
+	//glShadeModel(GL_FLAT);
+	//glEnable(GL_DEPTH_TEST);
+
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	glGenTextures(1, &openGLHandle);
+	glBindTexture(GL_TEXTURE_2D, openGLHandle);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+					GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+					GL_LINEAR);
+	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
+	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
 }

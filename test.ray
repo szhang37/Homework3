@@ -1,26 +1,146 @@
-#camera 0.0 10.0 10.0   0.0 -1.0 -1.0   0.0 1.0 -1.0   .523  
+#camera -1.0 10.0 30.0   0.0 0.0 -1.0   0.0 1.0 -1.0   .523  
 #background 0.2 0.2 0.2
 #ambient 0.5 0.5 0.5 
-#ray_file_num 2
-#ray_file sphere.ray
+#ray_file_num 15
 #ray_file square.ray
-#light_num 1
-#light_dir
-	1.0 1.0 1.0
-	-1.0 -1.0 0.0
+#ray_file chair.ray
+#ray_file lamp.ray
+#ray_file lamp.ray
+#ray_file lamp.ray
+#ray_file lamp.ray
+#ray_file headlight.ray
+#ray_file ch.ray
+#ray_file ch.ray
+#ray_file ch.ray
+#ray_file ch.ray
+#ray_file ch.ray
+#ray_file ch.ray
+#ray_file ch.ray
+#ray_file ch.ray
+
+#light_num 5
+#light_point
+	1  1  1
+	0  7.5  0
+	1.0 0 0
+#light_point
+	1.0 0.0 0.0
+	9.0 5.1 -9.0
+	1 0.045 0.0075
+#light_point
+	0.0 1.0 0.0
+	9.0 5.1 9.0
+	1 0.045 0.0075
+#light_point
+	0.0 0.0 1.0
+	-9.0 5.1 -9.0
+	1 0.045 0.0075
+#light_point
+	0.0 0.0 1.0
+	-9.0 5.1 9.0
+	1 0.045 0.0075
 #group_begin
-	0.5 0.0 0.0 0.0
-	0.0 1.0 0.0 2.5
-	0.0 0.0 0.5 0.0
+	1.0 0.0 0.0 0.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 1.0 0.0
 	0.0 0.0 0.0 1.0
 	#ray_file_instance 0
 #group_end
 #group_begin
-	 1.0 0.0 1.0 0.0
-	 0.0 1.0 0.0 0.0
-	-1.0 0.0 1.0 0.0
-	 0.0 0.0 0.0 1.0
+	1.0 0.0 0.0 0.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 1.0 0.0
+	0.0 0.0 0.0 1.0
 	#ray_file_instance 1
 #group_end
-
-
+#group_begin
+	1.0 0.0 0.0 0.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 1.0 0.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 2
+#group_end
+#group_begin
+	1.0 0.0 0.0 -18.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 1.0 0.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 3
+#group_end
+#group_begin
+	1.0 0.0 0.0 -18.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 1.0 18.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 4
+#group_end
+#group_begin
+	1.0 0.0 0.0 0.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 1.0 18.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 5
+#group_end
+#group_begin
+	1.0 0.0 0.0 0.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 1.0 0.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 6
+#group_end
+#group_begin
+	1.0 0.0 0.0 0.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 -1.0 6.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 7
+#group_end
+#group_begin
+	1.0 0.0 0.0 0.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 1.0 -6.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 8
+#group_end
+#group_begin
+	1.0 0.0 0.0 3.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 -1.0 6.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 9
+#group_end
+#group_begin
+	1.0 0.0 0.0 3.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 1.0 -6.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 10
+#group_end
+#group_begin
+	1.0 0.0 0.0 -3.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 -1.0 6.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 11
+#group_end
+#group_begin
+	1.0 0.0 0.0 -3.0
+	0.0 1.0 0.0 0.0
+	0.0 0.0 1.0 -6.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 12
+#group_end
+#group_begin
+	0.0 0.0 1.0 -6.5
+	0.0 1.0 0.0 0.0
+	-1.0 0.0 0.0 0.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 13
+#group_end
+#group_begin
+	0.0 0.0 -1.0 6.5
+	0.0 1.0 0.0 0.0
+	1.0 0.0 0.0 0.0
+	0.0 0.0 0.0 1.0
+	#ray_file_instance 14
+#group_end
